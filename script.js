@@ -1,18 +1,14 @@
 let divContainer = document.createElement('div');
 divContainer.classList.add('container');
 
-
 let body = document.getElementsByTagName('body')[0]; //IMPORTANT TO ALWAYS ADS THE [0] BEFORE APPEND OTHER ELEMENTS, CHECK OUT THE REASONS 
 body.append(divContainer);
 
-// 
-
 let createDiv = function () {
-   
-    let div = document.createElement('div');
+   let div = document.createElement('div');
     div.classList.add('grid-item');
+    
     divContainer.append(div);
-
 } 
 
 let createGrid = function() {
@@ -24,6 +20,40 @@ let createGrid = function() {
 }
 
 createGrid();
+
+
+
+
+const items = document.getElementsByClassName('grid-item');
+// item.style.backgroundColor='yellow';
+// item.nextSibling.style.backgroundColor = 'yellow';
+let newColorItem = Array.from(items);
+
+newColorItem.forEach(element => {
+    element.addEventListener('mouseover',() => {
+        element.style.backgroundColor = 'black';
+    });
+    
+});
+
+// items.addEventListener('mouseover', () => {
+//     items.style.backgroundColor = 'black';
+// } )
+
+
+
+// gridItem.forEach((item) => {
+//    item.addEventListener('mouseover',(event) => {
+//     event.style
+//    } ) 
+// })
+
+
+// function changeColor() {
+    // let div = document.getElementById('new-color');
+    // div.style.backgroundColor = 'blue';
+// }
+
 // ***********************************************
 
 // const divElements = new Array(256);
@@ -47,3 +77,10 @@ createGrid();
 //     return console.log(a);
 // }
 // }
+
+// for (let i = 0; i === gridItem.length; i++) {
+//     gridItem[i].addEventListener('mouseover', function(){
+//         body.style.backgroundColor = 'black';
+//         i++;
+//     });
+// } 
