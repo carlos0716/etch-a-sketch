@@ -17,17 +17,20 @@ body {
 .container {
     display: flex;
     flex-wrap: wrap;
-    width: 800px;
-    height: 800px;
+    width: 400px;
+    height: 400px;
+    margin-left: 100px;
+    margin-top: 100px;
+    
 }
-
-
 
 .grid-item {
     background-color: antiquewhite;
-    height: 50px;
-    width: 50px;
-    border: solid 1px rgb(9, 8, 8);
-    
-    
+    height: 25px;
+    width: 25px;
+    border: solid 1px rgb(110, 106, 106);
+    display: inline-block;
 }
+
+
+
