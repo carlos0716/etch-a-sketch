@@ -31,11 +31,19 @@ let newColorItem = Array.from(items);
 
 newColorItem.forEach(element => {
     element.addEventListener('mouseover',() => {
-        element.style.backgroundColor = 'black';
+        element.style.backgroundColor = generateRandomColor();
     });
+
+    element.addEventListener('mouseleave', () => {
+        element.style.backgroundColor = generateRandomColor();
+    }); 
     
 });
 
+function generateRandomColor() {
+    let randomColor = '#'+Math.floor(Math.random()*16777215).toString(16);
+    return randomColor;
+}
 // items.addEventListener('mouseover', () => {
 //     items.style.backgroundColor = 'black';
 // } )
