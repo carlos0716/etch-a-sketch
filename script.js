@@ -1,5 +1,6 @@
 let divContainer = document.createElement('div');
 divContainer.classList.add('container');
+divContainer.setAttribute('id','container');
 
 let body = document.getElementsByTagName('body')[0]; //IMPORTANT TO ALWAYS ADS THE [0] BEFORE APPEND OTHER ELEMENTS, CHECK OUT THE REASONS 
 body.append(divContainer);
@@ -19,14 +20,10 @@ let createGrid = function() {
     }
 }
 
-createGrid();
-
-
-
+// createGrid();
 
 const items = document.getElementsByClassName('grid-item');
-// item.style.backgroundColor='yellow';
-// item.nextSibling.style.backgroundColor = 'yellow';
+
 let newColorItem = Array.from(items);
 
 newColorItem.forEach(element => {
@@ -34,9 +31,9 @@ newColorItem.forEach(element => {
         element.style.backgroundColor = generateRandomColor();
     });
 
-    element.addEventListener('mouseleave', () => {
-        element.style.backgroundColor = generateRandomColor();
-    }); 
+    // element.addEventListener('mouseleave', () => {
+    //     element.style.backgroundColor = generateRandomColor();
+    // }); 
     
 });
 
@@ -44,51 +41,34 @@ function generateRandomColor() {
     let randomColor = '#'+Math.floor(Math.random()*16777215).toString(16);
     return randomColor;
 }
-// items.addEventListener('mouseover', () => {
-//     items.style.backgroundColor = 'black';
-// } )
 
-
-
-// gridItem.forEach((item) => {
-//    item.addEventListener('mouseover',(event) => {
-//     event.style
-//    } ) 
-// })
-
-
-// function changeColor() {
-    // let div = document.getElementById('new-color');
-    // div.style.backgroundColor = 'blue';
-// }
-
-// ***********************************************
-
-// const divElements = new Array(256);
-// function createGrid() {
+function generateGrid(rows, columns) {
+    // let rows= prompt('Enter number of rows');
+    // let columns = prompt('Enter number of columns');
+    let numberOfDivs = rows * columns;
     
-    
-//     divElements.forEach(divElement) => {
-//         let div = document.createElement('div');
-
-//     };
-
-// }
-
-// const divArray = new Array(256);
-
-// function test(){
-// for(let i = 0; i===256; i++){
-//     let a = console.log(i);
-    
-//     i++;
-//     return console.log(a);
-// }
-// }
-
-// for (let i = 0; i === gridItem.length; i++) {
-//     gridItem[i].addEventListener('mouseover', function(){
-//         body.style.backgroundColor = 'black';
-//         i++;
-//     });
-// } 
+    if(rows > 100) {
+        alert('Error, the number of rows has to be equal or lesser than 100');
+    }
+    if (columns > 100) {
+        alert('Error, the number of columns has to be equal or lesser than 100');
+    }
+    function makeDiv() {
+       let div = document.createElement('div');
+       div.classList.add('grid-item');
+       divContainer.append(div);
+       
+}
+function makeGrid() {
+        let i = 0;
+        while(i !== numberOfDivs) {
+            makeDiv();
+            i++;
+        }
+        const container = divContainer;
+        container.style.gridTemplateColumns = `repeat(${columns}, 1em)`;
+        container.style.gridTemplateRows = ` repeat(${rows}, 1em)`;
+        
+}
+makeGrid();
+}
