@@ -65,10 +65,8 @@ function makeGrid() {
             makeDiv();
             i++;
         }
-        const container = divContainer;
-        container.style.gridTemplateColumns = `repeat(${columns}, 1em)`;
-        container.style.gridTemplateRows = ` repeat(${rows}, 1em)`;
-        
-}
+        divContainer.style.gridTemplateColumns = `repeat(${columns}, 1fr)`; // USE BACKTIKS IN ORDER TO MAKE THE REPEAT PROPERTY WITH THE DESIRED VALUE
+        divContainer.style.gridTemplateRows = ` repeat(${rows}, 1fr)`;
+    }
 makeGrid();
 }
