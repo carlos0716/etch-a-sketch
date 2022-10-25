@@ -22,29 +22,16 @@ let createGrid = function() {
 
 // createGrid();
 
-const items = document.getElementsByClassName('grid-item');
 
-let newColorItem = Array.from(items);
-
-newColorItem.forEach(element => {
-    element.addEventListener('mouseover',() => {
-        element.style.backgroundColor = generateRandomColor();
-    });
-
-    // element.addEventListener('mouseleave', () => {
-    //     element.style.backgroundColor = generateRandomColor();
-    // }); 
-    
-});
 
 function generateRandomColor() {
     let randomColor = '#'+Math.floor(Math.random()*16777215).toString(16);
     return randomColor;
 }
 
-function generateGrid(rows, columns) {
-    // let rows= prompt('Enter number of rows');
-    // let columns = prompt('Enter number of columns');
+function generateGrid() {
+    let rows= prompt('Enter number of rows');
+    let columns = prompt('Enter number of columns');
     let numberOfDivs = rows * columns;
     
     if(rows > 100) {
@@ -67,6 +54,25 @@ function makeGrid() {
         }
         divContainer.style.gridTemplateColumns = `repeat(${columns}, 1fr)`; // USE BACKTIKS IN ORDER TO MAKE THE REPEAT PROPERTY WITH THE DESIRED VALUE
         divContainer.style.gridTemplateRows = ` repeat(${rows}, 1fr)`;
-    }
+        
+}
 makeGrid();
 }
+
+let btn = document.querySelector('.btn');
+btn.addEventListener('click', () => {
+    generateGrid();
+    const items = document.getElementsByClassName('grid-item');
+    let newColorItem = Array.from(items);
+
+    newColorItem.forEach(element => {
+    element.addEventListener('mouseover',() => {
+        element.style.backgroundColor = generateRandomColor();
+    });
+
+    element.addEventListener('mouseleave', () => {
+        element.style.backgroundColor = 'white';
+    }); 
+    
+});
+})
