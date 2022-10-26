@@ -1,3 +1,7 @@
+// let btnReset = document.createElement('button');
+// btnReset.classList.add('btn', 'btn-reset');
+// btnReset.textContent = "reset";
+
 let divContainer = document.createElement('div');
 divContainer.classList.add('container');
 divContainer.setAttribute('id','container');
@@ -30,10 +34,18 @@ function generateRandomColor() {
 }
 
 function generateGrid() {
-    let rows= prompt('Enter number of rows');
-    let columns = prompt('Enter number of columns');
+    let rows= Number(prompt('Enter number of rows and columns'));
+    let columns = rows //Number(prompt('Enter number of columns'));
     let numberOfDivs = rows * columns;
     
+    
+    if (rows === '') {
+        alert('Enter a number between 1 and 100');
+    }
+    
+    if (rows < 1 ) {
+        alert('Enter a number between 1 and 100');
+    }
     if(rows > 100) {
         alert('Error, the number of rows has to be equal or lesser than 100');
     }
@@ -45,8 +57,8 @@ function generateGrid() {
        div.classList.add('grid-item');
        divContainer.append(div);
        
-}
-function makeGrid() {
+    }   
+    function makeGrid() {
         let i = 0;
         while(i !== numberOfDivs) {
             makeDiv();
@@ -55,24 +67,52 @@ function makeGrid() {
         divContainer.style.gridTemplateColumns = `repeat(${columns}, 1fr)`; // USE BACKTIKS IN ORDER TO MAKE THE REPEAT PROPERTY WITH THE DESIRED VALUE
         divContainer.style.gridTemplateRows = ` repeat(${rows}, 1fr)`;
         
-}
-makeGrid();
+    }
+        makeGrid();
 }
 
-let btn = document.querySelector('.btn');
-btn.addEventListener('click', () => {
+    let btn = document.querySelector('.btn');
+    btn.addEventListener('click', () => {
     generateGrid();
     const items = document.getElementsByClassName('grid-item');
     let newColorItem = Array.from(items);
 
-    newColorItem.forEach(element => {
-    element.addEventListener('mouseover',() => {
-        element.style.backgroundColor = generateRandomColor();
-    });
+    // newColorItem.forEach(element => {
+    // element.addEventListener('mouseover',() => {
+    //     element.style.backgroundColor = 'black';
+    // });
 
-    element.addEventListener('mouseleave', () => {
-        element.style.backgroundColor = 'white';
-    }); 
+    // element.addEventListener('mouseleave', () => {
+    //     element.style.backgroundColor = 'white';
+    // }); 
     
 });
+// })
+let btnBlack = document.querySelector('.btn-black');
+btnBlack.addEventListener('click', () => {
+    const items = document.querySelectorAll('.grid-item');
+    items.forEach(element => {
+        element.addEventListener('mouseover', () => {
+            element.style.backgroundColor = 'black';
+        })
+    });
+})
+
+let btnRnbw = document.querySelector('.btn-rainbow');
+btnRnbw.addEventListener('click', () => {
+    const items = document.querySelectorAll('.grid-item');
+    items.forEach(element => {
+        element.addEventListener('mouseover',() => {
+            element.style.backgroundColor = generateRandomColor();
+        });
+});
+
+});
+
+let btnReset = document.querySelector('.btn-reset');
+btnReset.addEventListener('click', () => {
+    const items = document.querySelectorAll('.grid-item');
+    items.forEach(element => {
+        element.style.backgroundColor = 'white';
+    });
 })
