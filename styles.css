@@ -23,7 +23,7 @@ body {
     display: grid;
     width: 600px;
     height: 800px;
-    background: linear-gradient(45deg, #f55f0e, #f7f3f5);
+    background: linear-gradient(45deg, #8ee3f6, #f7f3f5);
 }
 
 .btn {
@@ -40,8 +40,6 @@ body {
     background: linear-gradient(90deg,#0162c8,#55e7fc);
     margin: 1em;
 }
-
-
 
 .grid-item {
     background-color: white;
